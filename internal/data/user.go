@@ -29,6 +29,7 @@ func (ar *userRepo) ListUser(ctx context.Context) ([]*biz.User, error) {
 	rows, err := ar.data.db.Model(&biz.User{}).Rows()
 	for rows.Next() {
 		user := &biz.User{}
+		//var user *biz.User =  &biz.User{}
 		err = ar.data.db.ScanRows(rows, user)
 		rv = append(rv, user)
 		if err != nil {

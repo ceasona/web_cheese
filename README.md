@@ -80,6 +80,8 @@ docker run --rm -p 8000:8000 -p 9000:9000 -v </path/to/your/configs>:/data/conf 
 
    业务数据访问，包含 cache、db 等封装，实现了 biz 的 repo 接口
 
+   NewGormDB建立数据库连接 》NewData实例化Data结构体 》NewUserRepo具体应用
+
 6. internal\service\service.go
 
    ```go
@@ -102,6 +104,10 @@ docker run --rm -p 8000:8000 -p 9000:9000 -v </path/to/your/configs>:/data/conf 
 
     [业务数据，相当于model]
 
+11. internal\server
+
+    服务Register，相当于最外层的url
+
 
 
 
@@ -114,3 +120,6 @@ docker run --rm -p 8000:8000 -p 9000:9000 -v </path/to/your/configs>:/data/conf 
 
 - [Go微服务框架go-kratos实战学习03：使用 gorm 实现增删改查操作](https://www.cnblogs.com/jiujuan/p/16338305.html) 
 - [Gorm官方文档](https://gorm.io/zh_CN/docs/query.html)
+- [微服务电商项目](https://github.com/go-kratos/beer-shop)
+- [前后端分离的管理系统](https://github.com/feihua/kratos-mall)
+- [基于Kratos的集中式仓库项目模版](https://github.com/wjs1152283574/kratos-mono-repo)
