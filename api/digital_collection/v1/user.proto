@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package api.digital_collection.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "web_cheese/api/digital_collection/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.digital_collection.v1";
+
+service User {
+	rpc CreateUser (CreateUserRequest) returns (CommonReply){
+    option (google.api.http) = {
+      post: "/user",
+      body: "*",
+    };
+  };
+	rpc UpdateUser (UpdateUserRequest) returns (CommonReply){
+    option (google.api.http) = {
+      put: "/user/{id}",
+      body: "*",
+    };
+  };
+	rpc DeleteUser (DeleteUserRequest) returns (CommonReply){
+    option (google.api.http) = {
+      delete: "/user/{id}",
+    };
+  };
+	rpc GetUser (GetUserRequest) returns (GetUserReply){
+    option (google.api.http) = {
+      get: "/user/{id}",
+    };
+  };
+	rpc ListUser (ListUserRequest) returns (ListUserReply){
+    option (google.api.http) = {
+      get: "/users",
+    };
+  };
+}
+
+message UserInfo {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message CreateUserRequest {
+    string name = 1;
+    string email = 2;
+    string password = 3;
+    string confirm_password = 4;
+}
+message CommonReply {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message UpdateUserRequest {
+    uint32 id = 1;
+    string name = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message DeleteUserRequest {
+    uint32 id = 1;
+}
+
+message GetUserRequest {
+    uint32 id = 1;
+}
+message GetUserReply {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message ListUserRequest {}
+message ListUserReply {
+    repeated UserInfo results = 1;
+    }
